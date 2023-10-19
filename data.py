@@ -2,12 +2,15 @@ headers = {
     "Content-Type": "application/json",
 }
 
-kits_data = {
-    "name": "a"
-}
 
-user_body = {
-    "firstName": "Анатолий",
-    "phone": "+79995553322",
-    "address": "г. Москва, ул. Пушкина, д. 10"
+order_body = {
+    "firstName": "aaaaaaaaaaaa",
+    "lastName": "Убдурахмангаджи",
+    "address": "Центральный проезд Хорошёвского Серебряного Бора 2",
+    "metroStation": 204,
+    "phone": "+34916123451",
+    "rentTime": 5,
+    "deliveryDate": "2023-10-10",
+    "comment": " Привет, Абдурахмангаджи!"
+
 }

@@ -3,23 +3,14 @@ import requests
 import data
 
 
-def post_new_user(body):
-    token = requests.post(configuration.URL_SERVICE + configuration.CREATE_USER_PATH,  # подставляем полный url
-                          json=body,  # тут тело
+def post_new_order():
+    order_track = requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER,  # подставляем полный url
                           headers=data.headers)  # а здесь заголовки
-    return token.json()["authToken"]
+
+    return order_track.json()["track"]
 
 
-response = post_new_user(data.user_body);
-print(response)
+def check_info_order(track):
+    return requests.get(configuration.URL_SERVICE + configuration.STATUS_ORDER + track,  # подставляем полный url
+                          headers=data.headers) # возвращаем сразу весь ответ
 
-def post_new_client_kit(kit_body, auth_token):
-    headers_copy = data.headers.copy()
-    headers_copy["Authorization"] = "Bearer " + auth_token
-    return requests.post(configuration.URL_SERVICE + configuration.MAIN_KITS,  # подставляем полный url
-                         json=kit_body,  # тут тело
-                         headers=headers_copy)  # а здесь заголовки.
-
-#response = post_new_client_kit(data.kits_data, "5c669615-c2c3-43c6-aecd-4bf6619a5194");
-#print(response.status_code)
-#print(response.json())
