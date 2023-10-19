@@ -1,0 +1,5 @@
+# Для этого: выведи список логинов курьеров с количеством их заказов в статусе «В доставке» (поле inDelivery = true). 
+SELECT c.login, COUNT(o.id) FROM "Couriers" AS c INNER JOIN "Orders" AS o ON o."courierId" = c.id WHERE o."inDelivery" = 't' GROUP BY c.login;
+
+# Для этого: выведи все трекеры заказов и их статусы. 
+SELECT track, CASE WHEN finished = 't' THEN '2' WHEN cancelled = 't' THEN '-1' WHEN "inDelivery" = 't' THEN '1' ELSE '0' END FROM "Orders";
